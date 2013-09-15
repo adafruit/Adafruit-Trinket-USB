@@ -11,7 +11,5 @@ void setup()
 
 void loop()
 {
-  TrinketMouse.poll();
-
   TrinketMouse.move(random(), random(), random() & 0x07);
 }
