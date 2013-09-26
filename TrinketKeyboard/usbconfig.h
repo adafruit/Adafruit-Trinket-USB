@@ -278,12 +278,12 @@ License along with TrinketKeyboard. If not, see
  * Class 0xff is "vendor specific".
  */
 #define USB_CFG_INTERFACE_CLASS     0x03 // 0x03 means HID
-#define USB_CFG_INTERFACE_SUBCLASS  0x01 // 0x01 means "boot"
-#define USB_CFG_INTERFACE_PROTOCOL  0x01 // 0x01 for keyboard
+#define USB_CFG_INTERFACE_SUBCLASS  0x00
+#define USB_CFG_INTERFACE_PROTOCOL  0x00
 /* See USB specification if you want to conform to an existing device class or
  * protocol.
  */
-#define USB_CFG_HID_REPORT_DESCRIPTOR_LENGTH    65
+#define USB_CFG_HID_REPORT_DESCRIPTOR_LENGTH    63
 /* Define this to the length of the HID report descriptor, if you implement
  * an HID device. Otherwise don't define it or define it to 0.
  * If you use this define, you must add a PROGMEM character array named
