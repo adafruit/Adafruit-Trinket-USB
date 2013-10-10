@@ -130,8 +130,13 @@ void Trinket_Hid_Combo::pressMultimediaKey(uint8_t key)
 {
 	report_buffer[0] = REPID_MMKEY;
 	report_buffer[1] = key;
+	report_buffer[2] = 0;
 	usbReportSend(REPSIZE_MMKEY);
-	pressMultimediaKey(0); // immediate release
+	// immediate release
+	report_buffer[0] = REPID_MMKEY;
+	report_buffer[1] = 0;
+	report_buffer[2] = 0;
+	usbReportSend(REPSIZE_MMKEY);
 }
 
 void Trinket_Hid_Combo::pressSystemCtrlKey(uint8_t key)
@@ -139,7 +144,10 @@ void Trinket_Hid_Combo::pressSystemCtrlKey(uint8_t key)
 	report_buffer[0] = REPID_SYSCTRLKEY;
 	report_buffer[1] = key;
 	usbReportSend(REPSIZE_SYSCTRLKEY);
-	pressSystemCtrlKey(0); // immediate release
+	// immediate release
+	report_buffer[0] = REPID_SYSCTRLKEY;
+	report_buffer[1] = key;
+	usbReportSend(REPSIZE_SYSCTRLKEY);
 }
 
 void ASCII_to_keycode(uint8_t ascii, uint8_t ledState, uint8_t* modifier, uint8_t* keycode)
