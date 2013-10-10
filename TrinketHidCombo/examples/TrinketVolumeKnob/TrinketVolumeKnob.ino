@@ -1,3 +1,5 @@
+// see tutorial at http://learn.adafruit.com/trinket-usb-volume-knob
+
 #include "TrinketHidCombo.h"
 
 #define PIN_ENCODER_A 0
