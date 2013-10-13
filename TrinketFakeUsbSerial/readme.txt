@@ -1,4 +1,6 @@
-TrinketFakeUsbSerial is a part of Adafruit's Trinket/Gemma USB Arduino Library
+TrinketFakeUsbSerial, by Frank Zhao
+
+A part of Adafruit's Trinket/Gemma USB Arduino Library
 
 TrinketFakeUsbSerial allows the user to use a serial terminal to communicate with the Trinket directly via USB. This depends on several pieces of host-side software to be installed first (see TrinketFakeUsbSerialHostSW).
 
