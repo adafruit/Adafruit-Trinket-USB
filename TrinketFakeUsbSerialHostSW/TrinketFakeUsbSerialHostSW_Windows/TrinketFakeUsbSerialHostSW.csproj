@@ -30,6 +30,9 @@
     <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
     <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>mainicon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="LibUsbDotNet">
       <HintPath>.\LibUsbDotNet.dll</HintPath>
@@ -63,6 +66,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="mainicon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

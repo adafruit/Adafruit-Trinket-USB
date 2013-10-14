@@ -264,7 +264,10 @@ namespace TrinketFakeUsbSerialHostSW
 
         private void menuExitClick(object sender, EventArgs e)
         {
-            Application.Exit();
+            //Application.Exit();
+            notifyIcon.Visible = false;
+            Process p = Process.GetCurrentProcess();
+            p.Kill();
         }
 
         private void IconDoubleClick(object sender, EventArgs e)
