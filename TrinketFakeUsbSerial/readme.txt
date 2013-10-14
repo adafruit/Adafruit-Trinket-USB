@@ -2,6 +2,8 @@ TrinketFakeUsbSerial, by Frank Zhao
 
 A part of Adafruit's Trinket/Gemma USB Arduino Library
 
+See tutorial at http://learn.adafruit.com/trinket-fake-usb-serial
+
 TrinketFakeUsbSerial allows the user to use a serial terminal to communicate with the Trinket directly via USB. This depends on several pieces of host-side software to be installed first (see TrinketFakeUsbSerialHostSW).
 
 Usage is similar to HardwareSerial, except that task() should be called at least once every 10 ms, or call a function that uses task(), such as available(), or send something. Basically, let the computer know that the Trinket is alive at least once every 10 ms.

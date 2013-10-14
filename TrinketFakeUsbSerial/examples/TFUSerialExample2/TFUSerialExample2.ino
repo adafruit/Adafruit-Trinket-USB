@@ -15,8 +15,15 @@ void loop()
 {
   TFUSerial.task(); // this should be called at least once every 10 ms
 
-  // simple echo
   if (TFUSerial.available()) {
-    TFUSerial.write((uint8_t)TFUSerial.read());
+    char c = TFUSerial.read();
+    if (c == 'a')
+    {
+      TFUSerial.println("hello world");
+    }
+    else if (c == 'b')
+    {
+      TFUSerial.println(millis(), DEC);
+    }
   }
 }

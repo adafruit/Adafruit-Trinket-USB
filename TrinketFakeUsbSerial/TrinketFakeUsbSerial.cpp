@@ -3,6 +3,8 @@ TrinketFakeUsbSerial allows the user to use a serial terminal to communicate wit
 
 Usage is similar to HardwareSerial, except that task() should be called at least once every 10 ms, or call a function that uses task(), such as available(), or send something. Basically, let the computer know that the Trinket is alive at least once every 10 ms.
 
+See tutorial at http://learn.adafruit.com/trinket-fake-usb-serial
+
 Copyright (c) 2013 Adafruit Industries
 All rights reserved.
 
