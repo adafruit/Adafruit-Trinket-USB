@@ -42,14 +42,15 @@ void Trinket_Mouse::begin()
 	usbBegin();
 }
 
-// makes a mouse movement, should be called at least once every 10ms, even if movement is 0
-void Trinket_Mouse::move(signed char x, signed char y, uint8_t buttonMask)
+// makes a mouse movement, must be called at least once every 10ms, even if no movement
+void Trinket_Mouse::move(signed char x, signed char y, signed char wheel, uint8_t buttonMask)
 {
 	signed char * signed_ptr = (signed char *)report_buffer; // this converts signed to unsigned
 
 	// format the report structure
 	signed_ptr[1] = x;
 	signed_ptr[2] = y;
+	signed_ptr[3] = wheel;
 	report_buffer[0] = buttonMask;
 
 	usbReportSend();

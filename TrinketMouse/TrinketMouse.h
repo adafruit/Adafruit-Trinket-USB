@@ -43,7 +43,7 @@ class Trinket_Mouse
 	public:
 		Trinket_Mouse(); // empty constructor, ignore me
 		void begin(); // starts the USB driver, causes re-enumeration
-		void move(signed char x, signed char y, uint8_t buttonMask); // makes a mouse movement, should be called at least once every 10ms, even if movement is 0
+		void move(signed char x, signed char y, signed char wheel, uint8_t buttonMask); // makes a mouse movement, must be called at least once every 10ms, even if no movement
 		char isConnected(); // checks if USB is connected, 0 if not connected
 };
 

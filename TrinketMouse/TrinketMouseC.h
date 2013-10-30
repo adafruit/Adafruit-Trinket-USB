@@ -29,7 +29,7 @@ extern "C" {
 #include <stdint.h>
 
 extern char usb_hasCommed;
-extern uint8_t report_buffer[3];
+extern uint8_t report_buffer[4];
 
 void usbBegin();
 void usbPollWrapper();

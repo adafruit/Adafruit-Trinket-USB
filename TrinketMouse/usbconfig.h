@@ -278,14 +278,14 @@ License along with TrinketMouse. If not, see
  * Class 0xff is "vendor specific".
  */
 #define USB_CFG_INTERFACE_CLASS     0x03 // 0x03 means HID
-#define USB_CFG_INTERFACE_SUBCLASS  0x01 // 0x01 means "boot"
-#define USB_CFG_INTERFACE_PROTOCOL  0x02 // 0x02 for mouse
+#define USB_CFG_INTERFACE_SUBCLASS  0x00
+#define USB_CFG_INTERFACE_PROTOCOL  0x00
 /* See USB specification if you want to conform to an existing device class or
  * protocol. The following classes must be set at interface level:
  * HID class is 3, no subclass and protocol required (but may be useful!)
  * CDC class is 2, use subclass 2 and protocol 1 for ACM
  */
-#define USB_CFG_HID_REPORT_DESCRIPTOR_LENGTH    50
+#define USB_CFG_HID_REPORT_DESCRIPTOR_LENGTH    52
 /* Define this to the length of the HID report descriptor, if you implement
  * an HID device. Otherwise don't define it or define it to 0.
  * If you use this define, you must add a PROGMEM character array named

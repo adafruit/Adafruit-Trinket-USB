@@ -30,7 +30,7 @@ License along with TrinketMouse. If not, see
 #include <util/delay.h>
 #include <stdint.h>
 
-uint8_t report_buffer[3];
+uint8_t report_buffer[4];
 char usb_hasCommed = 0;
 uint8_t idle_rate = 500 / 4;  // see HID1_11.pdf sect 7.2.4
 uint8_t protocol_version = 0; // see HID1_11.pdf sect 7.2.6
@@ -66,7 +66,7 @@ void usbReportSend()
 		usbPoll(); // this needs to be called at least once every 10 ms
 		if (usbInterruptIsReady())
 		{
-			usbSetInterrupt((uint8_t*)report_buffer, 3); // send
+			usbSetInterrupt((uint8_t*)report_buffer, 4); // send
 			break;
 
 			// see http://vusb.wikidot.com/driver-api
@@ -97,10 +97,11 @@ const PROGMEM char usbHidReportDescriptor[USB_CFG_HID_REPORT_DESCRIPTOR_LENGTH] 
 	0x05, 0x01,       //     USAGE_PAGE (Generic Desktop)
 	0x09, 0x30,       //     USAGE (X)
 	0x09, 0x31,       //     USAGE (Y)
+	0x09, 0x38,       //     USAGE (Wheel)
 	0x15, 0x81,       //     LOGICAL_MINIMUM (-127)
 	0x25, 0x7F,       //     LOGICAL_MAXIMUM (127)
 	0x75, 0x08,       //     REPORT_SIZE (8)
-	0x95, 0x02,       //     REPORT_COUNT (2)
+	0x95, 0x03,       //     REPORT_COUNT (3)
 	0x81, 0x06,       //     INPUT (Data,Var,Rel)
 	0xC0,             //   END_COLLECTION
 	0xC0,             // END COLLECTION
