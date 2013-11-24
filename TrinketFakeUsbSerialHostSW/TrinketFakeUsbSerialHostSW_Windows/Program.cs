@@ -57,7 +57,7 @@ namespace TrinketFakeUsbSerialHostSW
 
             // notifyIcon.DoubleClick += IconDoubleClick;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrinketFakeUsbSerialHostSW));
-            notifyIcon.Icon = (Icon)resources.GetObject("$this.Icon");
+            notifyIcon.Icon = (Icon)resources.GetObject("mainicon");
             notifyIcon.ContextMenu = notificationMenu;
 
             trinket = new VUsbDevice(0x1781, 0x1111); // VID and PID set inside usbconfig.h, which is the Trinket's VID and PID while using the TrinketFakeUsbSerial library
