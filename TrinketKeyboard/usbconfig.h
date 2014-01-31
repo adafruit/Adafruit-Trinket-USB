@@ -217,6 +217,14 @@ License along with TrinketKeyboard. If not, see
 /* define this macro to 1 if you want the function usbMeasureFrameLength()
  * compiled in. This function can be used to calibrate the AVR's RC oscillator.
  */
+#if defined(__AVR_ATtiny85__) || defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny25__)
+#ifndef __ASSEMBLER__
+#include <avr/interrupt.h>  // for sei()
+extern void calibrateOscillator(void);
+#endif
+#define USB_RESET_HOOK(resetStarts)  if(!resetStarts){cli(); calibrateOscillator(); sei();}
+#endif
+
 #define USB_USE_FAST_CRC                0
 /* The assembler module has two implementations for the CRC algorithm. One is
  * faster, the other is smaller. This CRC routine is only used for transmitted

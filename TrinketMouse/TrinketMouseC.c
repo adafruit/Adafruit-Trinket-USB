@@ -160,7 +160,7 @@ usbMsgLen_t usbFunctionSetup(uint8_t data[8])
  * the 12 MHz clock! Use the RC oscillator calibrated to 12 MHz for
  * experimental purposes only!
  */
-static void calibrateOscillator(void)
+void calibrateOscillator(void)
 {
     uchar       step = 128;
     uchar       trialValue = 0, optimumValue;
@@ -199,9 +199,4 @@ For version 5.x RC oscillators (those with a split range of 2x128 steps, e.g.
 ATTiny25, ATTiny45, ATTiny85), it may be useful to search for the optimum in
 both regions.
 */
-
-void usbEventResetReady(void)
-{
-    calibrateOscillator();
-}
 #endif
