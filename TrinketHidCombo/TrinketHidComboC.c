@@ -77,7 +77,7 @@ void usbReportSend(uint8_t sz)
 
 // USB HID report descriptor for boot protocol keyboard
 // see HID1_11.pdf appendix B section 1
-// USB_CFG_HID_REPORT_DESCRIPTOR_LENGTH is defined in usbconfig (should be 173)
+// USB_CFG_HID_REPORT_DESCRIPTOR_LENGTH is defined in usbconfig (should be 175)
 const PROGMEM char usbHidReportDescriptor[USB_CFG_HID_REPORT_DESCRIPTOR_LENGTH] = {
 	0x05, 0x01,           // USAGE_PAGE (Generic Desktop)
 	0x09, 0x02,           // USAGE (Mouse)
@@ -99,6 +99,7 @@ const PROGMEM char usbHidReportDescriptor[USB_CFG_HID_REPORT_DESCRIPTOR_LENGTH] 
 	0x05, 0x01,           //     USAGE_PAGE (Generic Desktop)
 	0x09, 0x30,           //     USAGE (X)
 	0x09, 0x31,           //     USAGE (Y)
+	0x09, 0x38,           //     USAGE (Wheel)
 	0x15, 0x81,           //     LOGICAL_MINIMUM (-127)
 	0x25, 0x7F,           //     LOGICAL_MAXIMUM (127)
 	0x75, 0x08,           //     REPORT_SIZE (8)

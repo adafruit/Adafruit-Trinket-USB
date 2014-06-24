@@ -50,13 +50,14 @@ void Trinket_Hid_Combo::poll()
 }
 
 // makes a mouse movement
-void Trinket_Hid_Combo::mouseMove(signed char x, signed char y, uint8_t buttonMask)
+void Trinket_Hid_Combo::mouseMove(signed char x, signed char y, signed char wheel, uint8_t buttonMask)
 {
 	signed char * signed_ptr = (signed char *)report_buffer; // this converts signed to unsigned
 
 	// format the report structure
 	signed_ptr[2] = x;
 	signed_ptr[3] = y;
+	signed_ptr[4] = wheel;
 	report_buffer[1] = buttonMask;
 	report_buffer[0] = REPID_MOUSE;
 
