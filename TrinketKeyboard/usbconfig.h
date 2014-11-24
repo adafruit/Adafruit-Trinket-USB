@@ -35,6 +35,7 @@ License along with TrinketKeyboard. If not, see
 
 /* ---------------------------- Hardware Config ---------------------------- */
 
+#if defined(__AVR_ATtiny85__) || defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny25__)
 #define USB_CFG_IOPORTNAME      B
 /* This is the port where the USB bus is connected. When you configure it to
  * "B", the registers PORTB, PINB and DDRB will be used.
@@ -52,6 +53,12 @@ License along with TrinketKeyboard. If not, see
  * interrupt, the USB interrupt will also be triggered at Start-Of-Frame
  * markers every millisecond.]
  */
+#else
+#define USB_CFG_IOPORTNAME      D
+#define USB_CFG_DMINUS_BIT      7
+#define USB_CFG_DPLUS_BIT       2
+#endif
+ 
 #define USB_CFG_CLOCK_KHZ       (F_CPU/1000)
 /* Clock rate of the AVR in kHz. Legal values are 12000, 12800, 15000, 16000,
  * 16500, 18000 and 20000. The 12.8 MHz and 16.5 MHz versions of the code
@@ -213,11 +220,14 @@ License along with TrinketKeyboard. If not, see
  * usbFunctionWrite(). Use the global usbCurrentDataToken and a static variable
  * for each control- and out-endpoint to check for duplicate packets.
  */
+
+#if defined(__AVR_ATtiny85__) || defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny25__)
+
 #define USB_CFG_HAVE_MEASURE_FRAME_LENGTH   1
 /* define this macro to 1 if you want the function usbMeasureFrameLength()
  * compiled in. This function can be used to calibrate the AVR's RC oscillator.
  */
-#if defined(__AVR_ATtiny85__) || defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny25__)
+
 #ifndef __ASSEMBLER__
 #include <avr/interrupt.h>  // for sei()
 extern void calibrateOscillator(void);
@@ -384,6 +394,7 @@ extern void calibrateOscillator(void);
  * which is not fully supported (such as IAR C) or if you use a differnt
  * interrupt than INT0, you may have to define some of these.
  */
+ #if defined(__AVR_ATtiny85__) || defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny25__)
 #define USB_INTR_CFG            PCMSK
 #define USB_INTR_CFG_SET        (1 << USB_CFG_DPLUS_BIT)
 #define USB_INTR_CFG_CLR        0
@@ -392,5 +403,6 @@ extern void calibrateOscillator(void);
 #define USB_INTR_PENDING        GIFR
 #define USB_INTR_PENDING_BIT    PCIF
 #define USB_INTR_VECTOR         PCINT0_vect
+#endif
 
 #endif /* __usbconfig_h_included__ */
