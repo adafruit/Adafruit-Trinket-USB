@@ -114,13 +114,14 @@ def main(argv):
 
             except Exception as ex:
                 exStr = str(ex).lower()
-                if 'timeout' not in exStr: # ignore timeout errors, but all other errors signifies that the device disconnected
+                if "timed out" in exStr or "timeout" in exStr: # ignore timeout errors
+                    time.sleep(0.01) # slight delay
+                else: # all other errors signifies that the device disconnected
                     if silent == False:
                         print 'USB read error: ', ex
                     time.sleep(0.1) # don't hog all CPU
                     trinketHandle = False # disconnect to reacquire
                     break
-                time.sleep(0.01) # slight delay
 
         # end of while
         thisMsg = 'Trinket Disconnected'
