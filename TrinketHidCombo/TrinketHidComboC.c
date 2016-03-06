@@ -211,9 +211,10 @@ usbMsgLen_t usbFunctionSetup(uint8_t data[8])
 			if (rq->wValue.bytes[0] == REPID_SYSCTRLKEY) return REPSIZE_SYSCTRLKEY;
 			return 8; // default
 		case USBRQ_HID_SET_REPORT:
-			if (rq->wLength.word == 1) // check data is available
+			if (rq->wLength.word == 2) // check data is available
 			{
-				// 1 byte, we don't check report type (it can only be output or feature)
+				// 1st is the report byte, data is the 2nd byte.
+				// We don't check report type (it can only be output or feature)
 				// we never implemented "feature" reports so it can't be feature
 				// so assume "output" reports
 				// this means set LED status
@@ -232,7 +233,8 @@ usbMsgLen_t usbFunctionSetup(uint8_t data[8])
 // see http://vusb.wikidot.com/driver-api
 usbMsgLen_t usbFunctionWrite(uint8_t * data, uchar len)
 {
-	led_state = data[0];
+	//We take the 2nd byte, which is the data byte
+	led_state = data[1];
 	return 1; // 1 byte read
 }
 
