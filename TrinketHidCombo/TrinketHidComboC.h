@@ -40,7 +40,7 @@ void usbReportSend(uint8_t sz);
 #define REPID_KEYBOARD      2
 #define REPID_MMKEY         3
 #define REPID_SYSCTRLKEY    4
-#define REPSIZE_MOUSE       4
+#define REPSIZE_MOUSE       5
 #define REPSIZE_KEYBOARD    8
 #define REPSIZE_MMKEY       3
 #define REPSIZE_SYSCTRLKEY  2

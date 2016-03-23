@@ -43,6 +43,7 @@ class Trinket_Hid_Combo : public Print
 		char isConnected(); // checks if USB is connected, 0 if not connected
 
 		// makes a mouse movement
+		void mouseMove(signed char x, signed char y, signed char wheel, uint8_t buttonMask);
 		void mouseMove(signed char x, signed char y, uint8_t buttonMask);
 
 		// presses up to 5 keys, and modifiers (modifiers are keys like shift, CTRL, etc)
