@@ -41,10 +41,34 @@ class Trinket_Mouse
 {
 	private:
 	public:
-		Trinket_Mouse(); // empty constructor, ignore me
-		void begin(); // starts the USB driver, causes re-enumeration
-		void move(signed char x, signed char y, signed char wheel, uint8_t buttonMask); // makes a mouse movement, must be called at least once every 10ms, even if no movement
-		char isConnected(); // checks if USB is connected, 0 if not connected
+		Trinket_Mouse();
+	
+		// Starts the USB driver, causes re-enumeration.
+		// Typically, you'd call this in setup.
+		void begin(); 
+
+		// Reports that mouse has been moved, and/or scroll wheel has
+		// been turned, and/or button(s) are being pressed. Must be
+		// called every 10 ms, even if the mouse hasn't moved, or
+		// otherwise been touched.
+		//
+	        // x specifies how much the cursor has moved to the right
+		// (negative values indicate left movement). Similarly,
+		// y specify how much cursor has moved down (negative
+		// values indicate up movement). Units???
+		//
+		// wheel specifies how much to scroll the scroll wheel.
+		// Positive values indicate that the scroll bar should go
+		// up (equivalently, the page moves down). Units???
+		//
+		// buttonMask indicates which buttons are being pressed.
+		// Its value is MOUSEBTN_LEFT_MASK or similarly named
+		// values, which are defined above. Can bitwise or of
+		// MOUSEBTN_*_MASK be passed?
+		void move(signed char x, signed char y, signed char wheel, uint8_t buttonMask);
+
+		// Returns 0 if not connected to host (PC).
+		char isConnected();
 };
 
 // an instance that the user can use
