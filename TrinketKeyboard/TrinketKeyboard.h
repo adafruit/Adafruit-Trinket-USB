@@ -158,7 +158,7 @@ extern Trinket_Keyboard TrinketKeyboard;
 #define KEYCODE_F15				0x6A
 #define KEYCODE_F16				0x6B
 #define KEYCODE_F17				0x6C
-#defive KEYCODE_F18				0x6D
+#define KEYCODE_F18				0x6D
 #define KEYCODE_F19				0x6E
 #define KEYCODE_F20				0x6F
 #define KEYCODE_F21				0x70
